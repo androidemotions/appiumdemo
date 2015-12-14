@@ -1,0 +1,104 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>ua.qafactory.appiumdemo</groupId>
+	<artifactId>demoforappium</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>Appium Demo</name>
+	<description>Simple example of single test approach for iOS and Android automation</description>
+
+
+	<!-- Default TestNG.xml file name priperty -->
+	<properties>
+		<suiteXmlFile>testng.xml</suiteXmlFile>
+		<targetClient>ANDROID</targetClient>
+	</properties>
+
+
+	<dependencies>
+		<dependency>
+			<groupId>ru.yandex.qatools.htmlelements</groupId>
+			<artifactId>htmlelements-java</artifactId>
+			<version>1.15</version>
+		</dependency>
+		<dependency>
+			<groupId>ru.yandex.qatools.htmlelements</groupId>
+			<artifactId>htmlelements-matchers</artifactId>
+			<version>1.15</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>6.9.7</version>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>2.48.2</version>
+		</dependency>
+		<dependency>
+			<groupId>ru.yandex.qatools.allure</groupId>
+			<artifactId>allure-testng-adaptor</artifactId>
+			<version>1.4.19</version>
+		</dependency>
+		<dependency>
+			<groupId>io.appium</groupId>
+			<artifactId>java-client</artifactId>
+			<version>3.2.0</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+
+			<plugin>
+				<!--Compiler for sources -->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.3</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+
+			<!-- Tell maven to use Test.xml on test stage -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.18.1</version>
+				<configuration>
+					<testFailureIgnore>false</testFailureIgnore>
+					<argLine>
+						-javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/1.8.5/aspectjweaver-1.8.5.jar
+					</argLine>
+					<systemPropertyVariables>
+						<targetClient>${targetClient}</targetClient>
+					</systemPropertyVariables>
+					<suiteXmlFiles>
+						<suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
+					</suiteXmlFiles>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>org.aspectj</groupId>
+						<artifactId>aspectjweaver</artifactId>
+						<version>1.8.5</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+		</plugins>
+	</build>
+
+	<reporting>
+		<excludeDefaults>true</excludeDefaults>
+		<plugins>
+			<plugin>
+				<groupId>ru.yandex.qatools.allure</groupId>
+				<artifactId>allure-maven-plugin</artifactId>
+				<version>2.5</version>
+			</plugin>
+		</plugins>
+	</reporting>
+</project>

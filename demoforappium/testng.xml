@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Functional tests">
+
+	<test verbose="2" name="Maven demo tests">
+		<packages>
+			<package name="androidtest" />
+		</packages>
+	</test>
+	
+	<!-- <test verbose="2" name="Calculator test"> <classes> <class name="seleniumdemo.SimpleTestConvertedFromIDE"/> 
+		</classes> </test> <test verbose="2" name="Web test"> <classes> <class name="seleniumdemo.BrowserControlDemo"/> 
+		<class name="passwords.AngelTest"/> <class name="passwords.UniversalWebTest"/> 
+		</classes> </test> -->
+</suite> 
